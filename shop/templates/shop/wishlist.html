@@ -1,0 +1,22 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<h2 class="mb-4 fw-bold">Избранные книги</h2>
+<div class="row">
+    {% for item in wishlist %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                {% if item.book.image %}
+                    <img src="{{ item.book.image.url }}" class="card-img-top" alt="{{ item.book.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{ item.book.title }}</h5>
+                    <p class="text-primary">{{ item.book.price }} сом</p>
+                    <a href="{% url 'toggle_wishlist' item.book.id %}" class="btn btn-outline-danger btn-sm">Убрать из избранного</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="col-12"><div class="alert alert-info">В избранном пока ничего нет.</div></div>
+    {% endfor %}
+</div>
+{% endblock %}

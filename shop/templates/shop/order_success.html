@@ -1,0 +1,8 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<div class="text-center bg-white p-5 rounded shadow-sm">
+    <h2 class="text-success fw-bold">Спасибо за заказ, {{ order.full_name }}!</h2>
+    <p class="lead">Ваш заказ №{{ order.id }} успешно оформлен. Мы свяжемся с вами по номеру {{ order.phone }}.</p>
+    <a href="{% url 'index' %}" class="btn btn-primary mt-3">Вернуться на главную</a>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<div class="row bg-white p-4 rounded shadow-sm">
+    <div class="col-md-4">
+        {% if book.image %}
+            <img src="{{ book.image.url }}" class="img-fluid rounded" alt="{{ book.title }}">
+        {% else %}
+            <img src="https://via.placeholder.com/300x400?text=Нет+фото" class="img-fluid rounded" alt="Нет фото">
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+        <h2 class="fw-bold">{{ book.title }}</h2>
+        <p class="text-muted">Автор: <strong>{{ book.author }}</strong></p>
+        <p>Жанр: <span class="badge bg-info text-dark">{{ book.genre }}</span></p>
+        <h3 class="text-primary mb-3">{{ book.price }} сом</h3>
+        <p class="mb-4">{{ book.description }}</p>
+        <a href="{% url 'cart_add' book.id %}" class="btn btn-primary btn-lg">Добавить в корзину</a>
+        <a href="{% url 'index' %}" class="btn btn-outline-secondary btn-lg ms-2">Назад к каталогу</a>
+    </div>
+</div>
+{% endblock %}

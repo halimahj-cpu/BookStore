@@ -1,0 +1,33 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<h2 class="mb-4 fw-bold">Ваша корзина</h2>
+<!-- Кнопка возврата в каталог -->
+<a href="{% url 'index' %}" class="btn btn-secondary" style="margin-bottom: 20px; display: inline-block;">
+    ← Вернуться в каталог
+</a>
+{% if items %}
+    <div class="list-group mb-4">
+        {% for item in items %}
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+            <h5 class="mb-1">{{ item.book.title }}</h5>
+            <small class="text-muted">Цена: {{ item.book.price }} сом</small>
+
+            <div class="mt-2 d-flex align-items-center">
+                <a href="{% url 'cart_decrease' item.id %}" class="btn btn-sm btn-outline-secondary px-2">-</a>
+                <span class="mx-3 fw-bold">× {{ item.quantity }} шт.</span>
+                <a href="{% url 'cart_increase' item.id %}" class="btn btn-sm btn-outline-secondary px-2">+</a>
+            </div>
+        </div>
+                <div>
+                    <a href="{% url 'cart_remove' item.id %}" class="btn btn-danger btn-sm">Удалить</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <h4>Итого к оплате: <span class="text-primary">{{ total }} сом</span></h4>
+    <a href="{% url 'checkout' %}" class="btn btn-success btn-lg mt-3">Оформить заказ</a>
+{% else %}
+    <div class="alert alert-info">Ваша корзина пуста. <a href="{% url 'index' %}">Перейти в каталог</a></div>
+{% endif %}
+{% endblock %}

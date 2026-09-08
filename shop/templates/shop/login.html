@@ -1,0 +1,13 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5 bg-white p-4 rounded shadow-sm">
+        <h2 class="mb-3 fw-bold text-center">Вход</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary w-100">Войти</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

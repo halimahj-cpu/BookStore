@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f5f5;
+}
+
+/* Стили для поиска и шапки */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2b2b2b;
+    padding: 15px 30px;
+    color: white;
+}
+
+#searchInput {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #555;
+    background-color: #3b3b3b;
+    color: white;
+}
